@@ -7,8 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Admin - dynamiczny tekst z nazwą użytkownika
 
   // Specify your backend URL
-  const backendUrl = "https://chatboxbackend-hzlz.onrender.com"; // Update with your live backend URL
-  const socket = io(backendUrl); // Use the live backend URL for Socket.io connection
+  const socket = io('https://chatboxbackend-hzlz.onrender.com', {
+    withCredentials: true, // Ensure credentials are sent with requests
+  });
   
   nameInput.addEventListener('keydown', function (event) {
     if (event.key === 'Enter') {

@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Update Socket.IO connection to point to the backend service on Render
-  const backendUrl = "https://chatboxbackend-hzlz.onrender.com"; // Your live backend URL
-  const socket = io(backendUrl); // Initialize socket with backend URL
+  const socket = io('https://chatboxbackend-hzlz.onrender.com', {
+    withCredentials: true, // Ensure credentials are sent with requests
+  });
   
   const conversationsDiv = document.getElementById('conversations');
   const adminMessageInput = document.getElementById('adminMessage');
