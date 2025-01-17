@@ -38,7 +38,7 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 app.post('/api/validate-admin', (req, res) => {
   const { password } = req.body;
 
-  if (password === ADMIN_PASSWORD) {
+  if (password === adminPassword) {
     res.sendStatus(200); // Valid password
   } else {
     res.sendStatus(401); // Invalid password
