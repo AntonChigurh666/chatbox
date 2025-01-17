@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   // Elements for password authentication
-  const passwordPrompt = document.getElementById('passwordPrompt');
+
   const passwordInput = document.getElementById('passwordInput');
   const passwordSubmit = document.getElementById('passwordSubmit');
   const adminPanel = document.getElementById('adminPanel');
@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(response => {
         if (response.ok) {
           // Grant access to the admin panel
-          passwordPrompt.style.display = 'none';
+
           adminPanel.style.display = 'block';
           passwordInput.style.display = 'none';
           passwordSubmit.style.display = 'none';
