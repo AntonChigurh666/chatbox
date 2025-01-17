@@ -33,7 +33,6 @@ app.use('/socket.io', express.static(path.join(__dirname, 'node_modules/socket.i
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
 // Store the admin password securely (use env variable or hash in production)
-const ADMIN_PASSWORD = 'YourSecurePassword';
 
 // Admin authentication endpoint
 app.post('/api/validate-admin', (req, res) => {
