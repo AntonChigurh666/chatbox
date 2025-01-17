@@ -511,7 +511,7 @@ body {
     #adminReply {
         width: 90%; /* Adjust to mobile width */
         height: 30vh;
-        font-size: 4vw;
+        font-size: 6vw;
     }
 
     #sendButton {
