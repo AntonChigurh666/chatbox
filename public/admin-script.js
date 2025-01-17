@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
           // Grant access to the admin panel
           passwordPrompt.style.display = 'none';
           adminPanel.style.display = 'block';
+          passwordInput.style.display = 'none';
+          passwordSubmit.style.display = 'none';
         } else {
           alert('Invalid password. Access denied.');
         }
