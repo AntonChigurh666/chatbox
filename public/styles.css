@@ -1,0 +1,539 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    overflow: hidden;
+    box-sizing: border-box; /* Ensure padding doesn't affect size */
+}
+
+#container {
+    width: 80vw;
+    height: 88vh;
+    left: 10vw;
+    top: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    color: rgb(0, 0, 0);
+    overflow: hidden;
+    gap: 3vh;
+    color: whitesmoke;
+    z-index: 10;
+}
+
+#talkContainer {
+    width: 80vw;
+    height: 20vh;
+    font-family: Tahoma;
+    font-size: 3vw;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: flex-start;
+    box-sizing: border-box; /* Ensure padding doesn't affect size */
+    padding: 1vw;
+}
+
+#nameContainer {
+    width: 80vw;
+    height: 8vh;
+    font-family: Tahoma;
+    font-size: 1.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+#nameQuestion {
+    width: 20vw;
+    height: 8vh;
+    display: flex; /* Enable flexbox */
+    justify-content: right;
+    align-items: center; /* Center vertically */
+    box-sizing: border-box; /* Ensure padding doesn't affect size */
+    padding: 1vw;
+}
+
+#nameInput {
+    width: 26vw;
+    height: 8vh;
+    display: block;
+    font-family: Tahoma;
+    font-size: 1.5vw;
+    box-sizing: border-box; /* Ensure padding doesn't affect size */
+    padding: 1vw;
+    border: 3px solid whitesmoke;
+    border-radius: 6px;
+    background-color: black;
+    color: whitesmoke;
+}
+
+#questionContainer {
+    width: 80vw;
+    height: 8vh;
+    font-family: Tahoma;
+    font-size: 1.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+#you {
+    width: 20vw;
+    height: 8vh;
+    display: flex; /* Enable flexbox */
+    justify-content: right;
+    align-items: center; /* Center vertically */
+    padding: 1vw;
+    box-sizing: border-box; /* Ensure padding doesn't affect size */
+}
+
+#userInput {
+    width: 60vw;
+    height: 8vh;
+    display: block;
+    font-family: Tahoma;
+    font-size: 1.5vw;
+    box-sizing: border-box; /* Ensure padding doesn't affect size */
+    padding: 1vw;
+    border: 3px solid whitesmoke;
+    border-radius: 6px;
+    background-color: black;
+    color: whitesmoke;
+}
+
+
+
+#replyContainer {
+    width: 80vw;
+    height: 40vh;
+    font-family: Tahoma;
+    font-size: 1.5vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: flex-start;
+    align-content: flex-start;
+}
+
+
+#replyHead {
+    width: 20vw;
+    height: 40vh;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; /* Moves items to the right horizontally */
+}
+
+#me {
+    width: 20vw;
+    height: 8vh;
+    display: flex; /* Enable flexbox */
+    justify-content: right;
+    align-items: center; /* Center vertically */
+    padding: 1vw;
+    box-sizing: border-box; /* Ensure padding doesn't affect size */
+}
+
+#agentPhoto {
+    height: 31.9vh;
+    padding-right: 0.5vw;
+    padding-bottom: 0.1vw;
+}
+
+#adminReply {
+    width: 60vw;
+    height: 40vh;
+    box-sizing: border-box; /* Ensure padding doesn't affect size */
+    padding: 1vw;
+    border: 3px solid whitesmoke;
+    border-radius: 6px;
+    background-color: black;
+    color: whitesmoke;
+}
+
+
+
+/* JESUS GOOD */
+#jesusgood {
+    position: absolute;
+    height: 60vh;
+    left: 60vw;
+    top: 105vh;
+    display: none;
+    z-index: 12;
+}
+
+.jesusgoodAnimation {
+    animation-name: jesusgoodAnim;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes jesusgoodAnim {
+    0% {
+        top: 105vh;
+    }
+    45% {
+        top: 20vh;
+    }
+    48% {
+        top: 20vh;
+    }
+    60% {
+        top: 25vh;
+    }
+    65% {
+        top: 25vh;
+    }
+    100% {
+        top: -70vh;
+    }
+} 
+
+
+/* JESUS FUCK YOU */
+#jesusfuckyou {
+    position: absolute;
+    height: 32vh;
+    left: 55vw;
+    top: 50vh;
+    display: none;
+    z-index: 12;
+    opacity: 0;
+    transition: opacity 1s;
+}
+
+
+/* JESUS BLOCK */
+#jesusblockpic {
+    position: absolute;
+    width: 18vw;
+    right: 105vw;
+    top: 30vh;
+    display: none;
+    z-index: 12;
+}
+
+.jesusblockpicAnimation {
+    animation-name: jesusblockpicAnim;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes jesusblockpicAnim {
+    0% {
+        right: 105vw;
+    }
+    100% {
+        right: 40vw;
+    }
+} 
+
+
+/* DEVIL */
+#devil {
+    position: absolute;
+    width: 22vw;
+    left: 10vw;
+    top: 105vh;
+    display: none;
+    z-index: 12;
+}
+
+.devilAnimation {
+    animation-name: devilAnim;
+    animation-duration: 26s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    
+}
+
+@keyframes devilAnim {
+    0% {
+        left: -30vw;
+        top: 105vh;
+        rotate: 20deg;
+    }
+    10% {
+        left: -30vw;
+        top: 105vh;
+        rotate: 20deg;
+    }
+    15% {
+        left: -6vw;
+        top: 77vh;
+        rotate: 20deg;
+    }
+    25% {
+        left: -30vw;
+        top: 105vh;
+        rotate: 20deg;
+    }
+
+    27% {
+        left: 25vw;
+        top: 105vh;
+        rotate: 0deg;
+    }
+    36% {
+        left: 25vw;
+        top: 73vh;
+        rotate: 0deg;
+    }
+    50% {
+        left: 45vw;
+        top: 105vh;
+        rotate: 0deg;
+    }
+
+    52% {
+        left: 55vw;
+        top: 105vh;
+        rotate: 0deg;
+    }
+    62% {
+        left: 55vw;
+        top: 45vh;
+        rotate: 0deg;
+    }
+    69% {
+        left: 55vw;
+        top: 45vh;
+        rotate: 180deg;
+    }
+    76% {
+        left: 55vw;
+        top: 105vh;
+        rotate: 180deg;
+    }
+
+    78% {
+        left: 105vw;
+        top: 105vh;
+        rotate: -30deg;
+    }
+    90% {
+        left: 88vw;
+        top: 78vh;
+        rotate: -30deg;
+    }
+    100% {
+        left: 105vw;
+        top: 105vh;
+        rotate: -30deg;
+    }
+
+} 
+
+
+/* DEVIL BLOCK */
+#blockleft {
+    position: absolute;
+    width: 50vw;
+    height: 100vh;
+    right: 105vw;
+    display: none;
+    z-index: 11;
+    background-color: black;
+}
+
+.blockleftAnimation {
+    animation-name: blockleftAnim;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes blockleftAnim {
+    0% {
+        right: 105vw;
+    }
+    100% {
+        right: 50vw;
+    }
+} 
+
+#blockright {
+    position: absolute;
+    width: 50vw;
+    height: 100vh;
+    left: 105vw;
+    display: none;
+    z-index: 11;
+    background-color: black;
+}
+
+.blockrightAnimation {
+    animation-name: blockrightAnim;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes blockrightAnim {
+    0% {
+        left: 105vw;
+    }
+    100% {
+        left: 50vw;
+    }
+} 
+
+#devilblockpic {
+    position: absolute;
+    width: 20vw;
+    right: 105vw;
+    top: 30vh;
+    display: none;
+    z-index: 12;
+}
+
+.devilblockpicAnimation {
+    animation-name: devilblockpicAnim;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+@keyframes devilblockpicAnim {
+    0% {
+        right: 105vw;
+    }
+    100% {
+        right: 40vw;
+    }
+} 
+
+
+
+@media screen and (max-width: 768px) {
+    #container {
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        justify-items: center;
+        width: 95vw;
+        left: 2.5vw;
+        gap: 5vh;
+        height: 100vh;
+        flex-direction: column-reverse; /* Reverse the order on small screens */
+    }
+
+    #talkContainer {
+        font-size: 5vw; /* Adjust font size for smaller screens */
+        width: 90vw;
+        height: 10vh;
+        top: 4vh;
+        display: none;
+    }
+
+    #nameContainer, #questionContainer {
+        width: 90vw;
+        font-size: 4vw; /* Reduce font size */
+        flex-direction: column; /* Stack inputs vertically */
+        align-items: center;
+        height: 8vh;
+    }
+
+    #nameContainer {
+        display: none;
+    }
+
+    #nameQuestion, #you {
+        width: 90vw;
+        width: auto;
+        justify-content: center;
+        text-align: center;
+        height: 6vh;
+    }
+
+    #you {
+        width: 90vw;
+        width: auto;
+        justify-content: center;
+        text-align: center;
+        height: 6vh;
+        display: none;
+    }
+
+    #nameInput, #userInput {
+        width: 90vw;
+        width: 90%; /* Make inputs responsive */
+        height: 7vh;
+        font-size: 4.5vw;
+        padding: 0.5vw;
+    }
+
+    #replyContainer {
+        width: 90vw;
+        height: auto; /* Allow flexibility */
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #replyHead {
+        width: 90vw;
+        align-items: center;
+        text-align: center;
+        height: 25vh;
+    }
+
+    #me {
+        width: auto;
+        font-size: 4vw; /* Adjust font size */
+        height: 6vh;
+        display: none;
+    }
+
+    #agentPhoto {
+        width: 56vw; /* Smaller image */
+        height: auto;
+    }
+
+    #adminReply {
+        width: 90%; /* Adjust to mobile width */
+        height: 30vh;
+        font-size: 4vw;
+    }
+
+    #sendButton {
+        width: 45vw;
+        height: 8vh;
+        background-color: black;
+        color: white;
+        border-radius: 3vw;
+        border: orange solid 4px;
+        font-size: 3vh;
+    }
+
+    /* Adjust image positions and sizes */
+    #jesusgood, #jesusfuckyou, #jesusblockpic, #devil, #devilblockpic {
+        width: 40vw; /* Resize to fit smaller screens */
+        height: auto;
+        left: auto;
+        right: auto;
+    }
+
+    /* Blocking animations */
+    #blockleft, #blockright {
+        width: 70vw; /* Resize blocks for better fit */
+    }
+}
