@@ -1,87 +1,100 @@
 const express = require('express');
 const http = require('http');
 const socketIo = require('socket.io');
-const cors = require('cors'); // Import cors if not already imported
-const path = require('path'); // Import 'path' module
+const cors = require('cors'); 
+const path = require('path'); 
 
 const app = express();
 const server = http.createServer(app);
 
+const adminPassword = process.env.ADMIN_PASSWORD;
+require('dotenv').config();
+
 const io = require('socket.io')(server, {
   cors: {
-    origin: 'https://chatboxjesus.onrender.com', // Frontend domain
+    origin: 'https://chatboxjesus.onrender.com',
     methods: ['GET', 'POST'],
-    credentials: true, // Enable credentials
+    credentials: true,
   },
 });
 
 app.use(cors({
-  origin: 'https://chatboxjesus.onrender.com', // Frontend domain
+  origin: 'https://chatboxjesus.onrender.com',
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
-  credentials: true, // Allow credentials
+  credentials: true,
 }));
 
-// Serving static files in "public" directory
-app.use('/socket.io', express.static(path.join(__dirname, 'node_modules/socket.io/client-dist')));
+// Middleware to parse JSON in requests
+app.use(express.json());
 
-// Admin interface route
-app.get('/admin', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/admin.html')); // Admin interface
+// Static files for the client
+app.use('/socket.io', express.static(path.join(__dirname, 'node_modules/socket.io/client-dist')));
+app.use('/public', express.static(path.join(__dirname, 'public')));
+
+// Store the admin password securely (use env variable or hash in production)
+const ADMIN_PASSWORD = 'YourSecurePassword';
+
+// Admin authentication endpoint
+app.post('/api/validate-admin', (req, res) => {
+  const { password } = req.body;
+
+  if (password === ADMIN_PASSWORD) {
+    res.sendStatus(200); // Valid password
+  } else {
+    res.sendStatus(401); // Invalid password
+  }
 });
 
-// Store user data (ID, name, IP, messages)
+// Admin panel route
+app.get('/admin', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/admin.html'));
+});
+
 const userConversations = {};
 
-// Handling socket connections
+// Handle socket.io connections
 io.on('connection', (socket) => {
   const userIp = socket.handshake.headers['x-forwarded-for'] || socket.handshake.address;
   console.log(`User connected: ${socket.id}, IP: ${userIp}`);
 
-  // Initialize conversation for user
   userConversations[socket.id] = {
     name: "",
     ip: userIp,
-    messages: []
+    messages: [],
   };
 
-  // Handle user name setting
   socket.on('setUserName', (name) => {
-    userConversations[socket.id].name = name; // Set username
-    io.emit('updateConversations', userConversations); // Notify admin
+    userConversations[socket.id].name = name;
+    io.emit('updateConversations', userConversations);
   });
 
-  // Handle user messages
   socket.on('sendMessage', (message) => {
     console.log(`Message from user (${socket.id}): ${message}`);
     userConversations[socket.id].messages.push({ from: 'user', message });
-    io.emit('updateConversations', userConversations); // Update conversations for admin
+    io.emit('updateConversations', userConversations);
   });
 
-  // Handle admin replies to users
   socket.on('replyToUser', ({ userId, reply }) => {
     console.log(`Admin replying to ${userId}: ${reply}`);
     userConversations[userId].messages.push({ from: 'admin', message: reply });
-    io.to(userId).emit('receiveMessage', reply); // Send reply to user
-    io.emit('updateConversations', userConversations); // Update admin conversation view
+    io.to(userId).emit('receiveMessage', reply);
+    io.emit('updateConversations', userConversations);
   });
 
-  // Handle user disconnection
-  socket.on('disconnect', () => {
-    console.log(`User disconnected: ${socket.id}, IP: ${userConversations[socket.id]?.ip}`);
-    delete userConversations[socket.id];
-    io.emit('updateConversations', userConversations); // Update conversations
-  });
-
-  // Handle admin actions
   socket.on('adminAction', ({ userId, action }) => {
     console.log(`Admin triggered action "${action}" for user ${userId}`);
-    io.to(userId).emit('adminAction', action); // Send the action to user
+    io.to(userId).emit('adminAction', action);
+  });
+
+  socket.on('disconnect', () => {
+    console.log(`User disconnected: ${socket.id}`);
+    delete userConversations[socket.id];
+    io.emit('updateConversations', userConversations);
   });
 });
 
-// Server listens on the port given by the environment, or default to 3000 for local development
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
