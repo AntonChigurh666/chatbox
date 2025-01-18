@@ -8,7 +8,7 @@ const path = require('path');
 const app = express();
 const server = http.createServer(app);
 
-const adminPassword = process.env.ADMIN_PASSWORD;
+const adminPassword = "plejadianie";
 
 const io = require('socket.io')(server, {
   cors: {
