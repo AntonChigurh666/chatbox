@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const userDiv = document.createElement('div');
       userDiv.classList.add('userConversation');
 
-      const userTitle = document.createElement('h4');
+      const userTitle = document.createElement('p');
       userTitle.innerHTML = `User: ${userId} (${user.name}) - IP: ${user.ip}`;
       userTitle.style.cursor = 'pointer';
 
