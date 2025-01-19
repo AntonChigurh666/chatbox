@@ -40,6 +40,7 @@ app.post('/api/validate-admin', (req, res) => {
 
   if (password === adminPassword) {
     res.sendStatus(200); // Valid password
+    console.log('Admin password from .env:', process.env.ADMIN_PASSWORD);
   } else {
     res.sendStatus(401); // Invalid password
   }
@@ -50,7 +51,6 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/admin.html'));
 });
 
-console.log('Admin password from .env:', process.env.ADMIN_PASSWORD);
 
 const userConversations = {};
 
