@@ -49,6 +49,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  console.log('Server response status:', response.status);
+response.text().then(console.log); // Log body of server response
+  
   // Admin panel socket.io functionalities
   socket.on('updateConversations', (conversations) => {
     conversationsDiv.innerHTML = '';
