@@ -50,6 +50,8 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/admin.html'));
 });
 
+console.log('Admin password from .env:', process.env.ADMIN_PASSWORD);
+
 const userConversations = {};
 
 // Handle socket.io connections
