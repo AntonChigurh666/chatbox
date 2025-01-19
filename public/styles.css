@@ -6,6 +6,10 @@ body {
     box-sizing: border-box; /* Ensure padding doesn't affect size */
 }
 
+    #sendButton {
+       display: none;
+    }
+
 #container {
     width: 80vw;
     height: 88vh;
