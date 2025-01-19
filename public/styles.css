@@ -4,6 +4,7 @@ body {
     background-color: black;
     overflow: hidden;
     box-sizing: border-box; /* Ensure padding doesn't affect size */
+    overflow: hidden;
 }
 
     #sendButton {
