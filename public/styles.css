@@ -526,6 +526,7 @@ body {
         border-radius: 3vw;
         border: orange solid 4px;
         font-size: 3vh;
+        display: block;
     }
 
     /* Adjust image positions and sizes */
