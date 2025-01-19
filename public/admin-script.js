@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
           adminPanel.style.display = 'block';
           passwordInput.style.display = 'none';
           passwordSubmit.style.display = 'none';
+          console.log('Correct:' +  enteredPassword);
         } else {
           alert('Invalid password. Access denied.');
         }
